@@ -49,12 +49,12 @@ def generateROC(x, y, model):
     ictal_fpr, ictal_tpr, _ = roc_curve(y_ictal, ictal_outcomes)
     healthy_fpr, healthy_tpr, _ = roc_curve(y_healthy, healthy_outcomes)
 
-    # Plot healthy and ictal ROCs and plot baseline
+    # Plot healthy and ictal ROCs and plot baseline, include AUC in legend
     pyplot.plot(ictal_fpr, ictal_tpr, marker='.', label='Ictal (AUC =%.3f' % ictal_auroc + ')')
     pyplot.plot(healthy_fpr, healthy_tpr, marker='.', label='Healthy (AUC=%.3f' % healthy_auroc + ')')
     pyplot.plot([0.0, 1.0], linestyle='--', label='Baseline')
 
-    # Label axes
+    # Label axes, title
     pyplot.xlabel('False Positive Rate')
     pyplot.ylabel('True Positive Rate')
     pyplot.title('EEG Classifier ROC Curve (' + str(len(y)) + " Samples)")
